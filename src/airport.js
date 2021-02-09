@@ -8,6 +8,6 @@ class Airport {
   }
 
   takeoff(plane) {
-    return true;
+    this.planes.pop(plane);
   }
 }

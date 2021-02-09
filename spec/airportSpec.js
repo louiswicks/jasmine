@@ -14,7 +14,9 @@ describe("airport", function() {
   });
 
   it("can take off", function() {
-    expect(airport.takeoff(plane)).toBe(true);
+    airport.land(plane)
+    airport.takeoff(plane)
+    expect(airport.planes.length).toBe(0);
   });
 
   // it("a land method", function() {
