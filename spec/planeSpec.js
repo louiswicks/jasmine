@@ -1,9 +1,23 @@
-describe("Plane", function(){
+'use strict';
+
+describe('Plane', function(){
   var plane;
-
-  it("working method returns true", function(){
+  beforeEach(function(){
     plane = new Plane();
-    expect(plane.working()).toBe(true);
-  })
+  });
 
-})
+  it('can land at an airport', function(){
+    expect(plane.land).not.toBeUndefined()
+  });
+});
+
+
+// describe("Plane", function(){
+//   var plane;
+//
+//   it("working method returns true", function(){
+//     plane = new Plane();
+//     expect(plane.working()).toBe(true);
+//   })
+//
+// })
