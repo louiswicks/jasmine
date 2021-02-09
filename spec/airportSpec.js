@@ -1,23 +1,46 @@
 'use strict';
 
 describe('Airport', function() {
-  var airport, plane;
+  var airport, plane, weather;
 
   beforeEach(function() {
-     airport = new Airport;
+     airport = new Airport(weather);
      plane = jasmine.createSpyObj('plane', ['land']);
+     weather = jasmine.createSpyObj('weather', ['isStormy']);
   });
 
   it('has no planes by default', function() {
     expect(airport.planes()).toEqual([]);
   });
 
+describe('under normal conditions',function(){
+      beforeEach(function(){
+        weather.isStormy.and.returnValue(false);
+      });
   it('lets a plane land', function() {
     airport.clearForLanding(plane);
     expect(airport.planes()).toContain(plane);
   });
+
+  it('lets a plane takeoff', function(){
+    airport.clearForTakeoff();
+    expect(airport.planes()).not.toContain(plane);
+  });
+});
 });
 
+describe('under stormy conditions',function(){
+    beforeEach(function(){
+      weather.isStormy.and.returnValue(true);
+    });
+    it('does not clear planes for landing', function(){
+      expect(function(){ airport.clearForLanding(plane); }).toThrowError('cannot land during storm');
+    });
+    it('does not clear planes for takeoff', function(){
+      expect(function(){ airport.clearForTakeOff(plane); }).toThrowError('cannot takeoff during storm');
+    });
+
+  });
 
 // describe("airport", function() {
 //   var airport, plane, planes;
