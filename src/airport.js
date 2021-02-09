@@ -1,6 +1,13 @@
 class Airport {
-  land(plane) {
-    return true;
+  constructor(planes) {
+    this.planes = [];
   }
 
+  land(plane) {
+    this.planes.push(plane);
+  }
+
+  takeoff(plane) {
+    return true;
+  }
 }

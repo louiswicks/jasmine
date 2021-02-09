@@ -1,16 +1,20 @@
 describe("airport", function() {
-  var airport;
-  var plane;
+  var airport, plane, planes;
 
   // let plane: plane;
 
   beforeEach(function() {
-    airport = new Airport();
+    airport = new Airport(planes);
   });
 
 
   it("can land a plane", function() {
-    expect(airport.land(plane)).toBe(true);
+    airport.land(plane)
+    expect(airport.planes).toContain(plane);
+  });
+
+  it("can take off", function() {
+    expect(airport.takeoff(plane)).toBe(true);
   });
 
   // it("a land method", function() {
