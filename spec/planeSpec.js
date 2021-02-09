@@ -1,36 +1,44 @@
 'use strict';
 
-describe('Plane', function(){
-  var plane, airport;
-
+describe('Plane',function(){
+  var plane;
+  var airport;
   beforeEach(function(){
     plane = new Plane();
-    airport = jasmine.createSpyObj('airport', ['clearForLanding', 'clearForTakeoff']);
+    airport = jasmine.createSpyObj('airport',['clearForLanding','clearForTakeOff']);
   });
-
   it('can land at an airport', function(){
-    expect(plane.land).not.toBeUndefined()
-  });
-
-  it('lands a plane at an aiport', function() {
-    plane.land(airport)
+    plane.land(airport);
     expect(airport.clearForLanding).toHaveBeenCalledWith(plane);
   });
-
-  it('a plane takes off from airport', function(){
-    plane.land(airport)
+  it('can takeoff from an airport', function(){
+    plane.land(airport);
     plane.takeoff();
-    expect(airport.clearForTakeoff).toHaveBeenCalledWith();
+    expect(airport.clearForTakeOff).toHaveBeenCalled();
   });
 });
-
-
-// describe("Plane", function(){
-//   var plane;
+// 'use strict';
 //
-//   it("working method returns true", function(){
+// describe('Plane', function(){
+//   var plane, airport;
+//
+//   beforeEach(function(){
 //     plane = new Plane();
-//     expect(plane.working()).toBe(true);
-//   })
+//     airport = jasmine.createSpyObj('airport', ['clearForLanding', 'clearForTakeoff']);
+//   });
 //
-// })
+//   it('can land at an airport', function(){
+//     expect(plane.land).not.toBeUndefined()
+//   });
+//
+//   it('lands a plane at an aiport', function() {
+//     plane.land(airport)
+//     expect(airport.clearForLanding).toHaveBeenCalledWith(plane);
+//   });
+//
+//   it('a plane takes off from airport', function(){
+//     plane.land(airport)
+//     plane.takeoff();
+//     expect(airport.clearForTakeoff).toHaveBeenCalledWith();
+//   });
+// });
