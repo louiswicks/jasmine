@@ -1,0 +1,6 @@
+class Airport {
+  land(plane) {
+    
+  }
+
+}

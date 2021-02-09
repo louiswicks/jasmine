@@ -1,4 +1,5 @@
-function fizzBuzz(number) {
+class FizzBuzz{
+  play(number) {
   if (number % 5 === 0 && number % 3 === 0) {
                     return "fizzbuzz";
                     }
@@ -11,4 +12,5 @@ function fizzBuzz(number) {
   else             {
                     return number;
                     }
+}
 }
