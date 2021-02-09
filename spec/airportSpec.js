@@ -1,3 +1,24 @@
+'use strict';
+
+describe('Airport', function() {
+  var airport, plane;
+
+  beforeEach(function() {
+     airport = new Airport;
+     plane = jasmine.createSpyObj('plane', ['land']);
+  });
+
+  it('has no planes by default', function() {
+    expect(airport.planes()).toEqual([]);
+  });
+
+  it('lets a plane land', function() {
+    airport.clearForLanding(plane);
+    expect(airport.planes()).toContain(plane);
+  });
+});
+
+
 // describe("airport", function() {
 //   var airport, plane, planes;
 //
